@@ -4,8 +4,8 @@ services:
     image: postgres:16
     container_name: postgresQL
     environment:
-      POSTGRES_USER: dbadmin
-      POSTGRES_PASSWORD: 2II`mX01O</s
+      POSTGRES_USER: administrador
+      POSTGRES_PASSWORD: 62tz7PIc1aP4
       POSTGRES_DB: proyecto
     networks:
       - red_interna
@@ -20,7 +20,7 @@ services:
     container_name: PGadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: administrador@email.com
-      PGADMIN_DEFAULT_PASSWORD: 2II`mX01O</s
+      PGADMIN_DEFAULT_PASSWORD: 62tz7PIc1aP4
     ports:
       - "5050:80"
     networks:
