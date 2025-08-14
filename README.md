@@ -1,48 +1,91 @@
-# Plantilla de Proyecto Django
+# 🐍 Plantilla para Inicializar Proyectos Django
 
-Plantilla Para Inicializar Proyectos con Django
+Esta plantilla sirve como guía rápida para configurar un proyecto Django con buenas prácticas, seguridad, formularios, full stack y producción.
 
-Información de paquetes:
+---
 
-* <https://djangopackages.org/>
+## 🔗 Recursos de Paquetes
 
-* <https://awesomedjango.org/>
+- [Django Packages](https://djangopackages.org/) – Encuentra paquetes útiles para Django.  
+- [Awesome Django](https://awesomedjango.org/) – Repositorio curado de herramientas, paquetes y tutoriales.
 
-1. Instalar Django [Documentación](https://docs.djangoproject.com/en/5.2/)
+---
 
-## Sitio de administración
+## 1️⃣ Instalación Inicial
 
-1. Instalar Django Import Export y configurar ([Documentnación](https://github.com/django-import-export/django-import-export))
+- Instalar Django: [Documentación oficial](https://docs.djangoproject.com/en/5.2/)
 
-    > Para este paquete es necesario hacer un **python manage.py collectstatic**
+---
 
-2. Instalar Django Unfold y Configurar [Documentacion](https://unfoldadmin.com/?utm_medium=github&utm_source=unfold)
+## 🖥️ Sitio de Administración
 
-## Seguridad
+### 1. Django Import Export
 
-1. Instalar AllAuth y Configurar [Documentación](https://docs.allauth.org/en/latest/)
+- Instalación y configuración: [Documentación](https://github.com/django-import-export/django-import-export)  
+- **Nota:** Ejecutar `python manage.py collectstatic` después de la instalación.
 
-Personalizar el modelo de usuario
+### 2. Django Unfold
 
-## Canales y Async
+- Instalación y configuración: [Documentación](https://unfoldadmin.com/?utm_medium=github&utm_source=unfold)  
+- Mejora la interfaz de administración estándar con funciones avanzadas.
 
-1. Instalación de Channels y Configuración [Documentación](https://channels.readthedocs.io/en/latest/installation.html)
+---
 
-## Formularios
+## 🔒 Seguridad
 
-1. Instalaciión de Crispy [Documentación](https://github.com/django-crispy-forms/crispy-bootstrap5)
+### 1. Django AllAuth
 
-2. Formularios de Multiples pasos [Documentación](https://django-formtools.readthedocs.io/en/latest/)
+- Instalación y configuración: [Documentación](https://docs.allauth.org/en/latest/)  
+- Permite autenticación social, registro y login.  
+- Personalizar el modelo de usuario según necesidades del proyecto.
 
-## Full Stack
+---
 
-1. Instalación de unicorn [Documentación](https://www.django-unicorn.com/docs/)
+## ⚡ Canales y Async
 
-## Campos para modelos
+### 1. Django Channels
 
-1. Instalación de Django Money [Documentación](https://github.com/django-money/django-money)
+- Instalación y configuración: [Documentación](https://channels.readthedocs.io/en/latest/installation.html)  
+- Soporte para WebSockets y funcionalidades asíncronas.
 
-## Producción
+---
 
-1. Instalación y Configuración de WhiteNoise para archivos estaticos [Documentación](https://whitenoise.readthedocs.io/en/stable/)
+## 📝 Formularios
 
+### 1. Django Crispy Forms
+
+- Instalación y configuración: [Documentación](https://github.com/django-crispy-forms/crispy-bootstrap5)  
+- Mejora la apariencia y estructura de los formularios con Bootstrap.
+
+### 2. Formularios de Múltiples Pasos
+
+- Paquete: `django-formtools`  
+- Documentación: [Aquí](https://django-formtools.readthedocs.io/en/latest/)  
+- Ideal para formularios largos o procesos de registro en pasos.
+
+---
+
+## 🌐 Full Stack
+
+### 1. Django Unicorn
+
+- Instalación y documentación: [Django Unicorn Docs](https://www.django-unicorn.com/docs/)  
+- Permite interactividad en tiempo real sin escribir JavaScript.
+
+---
+
+## 💰 Campos Especiales para Modelos
+
+### 1. Django Money
+
+- Instalación y configuración: [Documentación](https://github.com/django-money/django-money)  
+- Agrega soporte nativo para campos de moneda en modelos.
+
+---
+
+## 🚀 Producción
+
+### 1. WhiteNoise
+
+- Instalación y configuración: [Documentación](https://whitenoise.readthedocs.io/en/stable/)  
+- Gestiona archivos estáticos en producción de manera eficiente.
