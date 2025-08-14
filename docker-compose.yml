@@ -1,0 +1,115 @@
+services:
+  # PostgreSQL database service
+  db:
+    image: postgres:16
+    container_name: postgresQL
+    environment:
+      POSTGRES_USER: dbadmin
+      POSTGRES_PASSWORD: 2II`mX01O</s
+      POSTGRES_DB: proyecto
+    networks:
+      - red_interna
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+  # PGAdmin service for database management
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: PGadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: administrador@email.com
+      PGADMIN_DEFAULT_PASSWORD: 2II`mX01O</s
+    ports:
+      - "5050:80"
+    networks:
+      - red_interna
+    depends_on:
+      - db
+  # Redis service for caching
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      - red_interna
+    ports:
+      - "6379:6379"
+    restart: always
+  # Full Stack Web Application
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django
+    networks:
+      - red_interna
+    ports:
+      - "8000:8000"
+    command:
+      ["daphne", "-b", "0.0.0.0", "-p", "8000", "proyecto.asgi:application"]
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    restart: always
+  # Celery worker for background tasks
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: celery
+    networks:
+      - red_interna
+    command: ["celery", "-A", "proyecto", "worker", "--loglevel=info"]
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    restart: always
+  # Flower monitoring tool for Celery
+  flower:
+    image: mher/flower:1.2.0 # Usa una versión específica para mayor estabilidad
+    container_name: flower
+    command:
+      ["celery", "--broker=redis://redis:6379/0", "flower", "--port=5555"]
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+    networks:
+      - red_interna
+    restart: always
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - .:/app
+    depends_on:
+      - django
+    networks:
+      - red_interna
+    restart: always
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+    networks:
+      - red_interna
+
+volumes:
+  db_data:
+  portainer_data:
+networks:
+  red_interna:
+    driver: bridge
+    name: red_interna
