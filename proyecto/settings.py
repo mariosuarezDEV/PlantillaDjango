@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 import environ
 import os
 from pathlib import Path
@@ -17,9 +18,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Inicializamos django-environ
-env = environ.Env(
-    DEBUG=(bool, True)  # Tipo de dato y valor por defecto
-)
+env = environ.Env(DEBUG=(bool, True))  # Tipo de dato y valor por defecto
 
 # Leemos el archivo .env
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
@@ -34,7 +33,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -115,12 +114,7 @@ ASGI_APPLICATION = "proyecto.asgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+DATABASES = {"default": env.db()}
 
 
 # Password validation
@@ -181,9 +175,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-SOCIALACCOUNT_PROVIDERS = {
-
-}
+SOCIALACCOUNT_PROVIDERS = {}
 
 # Configuración de Crispy
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -191,24 +183,43 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Configuración de Martor
-MARTOR_THEME = 'bootstrap'
+MARTOR_THEME = "bootstrap"
 MARTOR_ENABLE_CONFIGS = {
-    'emoji': 'true',        # to enable/disable emoji icons.
-    'imgur': 'true',        # to enable/disable imgur/custom uploader.
-    'mention': 'false',     # to enable/disable mention
+    "emoji": "true",  # to enable/disable emoji icons.
+    "imgur": "true",  # to enable/disable imgur/custom uploader.
+    "mention": "false",  # to enable/disable mention
     # to include/revoke jquery (require for admin default django)
-    'jquery': 'true',
-    'living': 'false',      # to enable/disable live updates in preview
-    'spellcheck': 'false',  # to enable/disable spellcheck in form textareas
-    'hljs': 'true',         # to enable/disable hljs highlighting in preview
+    "jquery": "true",
+    "living": "false",  # to enable/disable live updates in preview
+    "spellcheck": "false",  # to enable/disable spellcheck in form textareas
+    "hljs": "true",  # to enable/disable hljs highlighting in preview
 }
 
 MARTOR_TOOLBAR_BUTTONS = [
-    'bold', 'italic', 'horizontal', 'heading', 'pre-code',
-    'blockquote', 'unordered-list', 'ordered-list',
-    'link', 'image-link', 'image-upload', 'emoji',
-    'direct-mention', 'toggle-maximize', 'help'
+    "bold",
+    "italic",
+    "horizontal",
+    "heading",
+    "pre-code",
+    "blockquote",
+    "unordered-list",
+    "ordered-list",
+    "link",
+    "image-link",
+    "image-upload",
+    "emoji",
+    "direct-mention",
+    "toggle-maximize",
+    "help",
 ]
 
+# Celery
+CELERY_BROKER_URL = "redis://redis:6379/0"  # Broker principal
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"  # Guardar resultados
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "America/Mexico_City"  # Ajusta a tu zona horaria
+# celery -A proyecto worker --loglevel=info
 
 # daphne -b 0.0.0.0 -p 8000 proyecto.asgi:application

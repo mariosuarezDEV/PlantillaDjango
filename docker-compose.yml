@@ -95,20 +95,8 @@ services:
     networks:
       - red_interna
     restart: always
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: always
-    ports:
-      - "9000:9000"
-    volumes:
-      - portainer_data:/data
-    networks:
-      - red_interna
-
 volumes:
   db_data:
-  portainer_data:
 networks:
   red_interna:
     driver: bridge
