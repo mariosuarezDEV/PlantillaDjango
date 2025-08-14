@@ -1,0 +1,22 @@
+{% load django_bootstrap5 %}
+{% load crispy_forms_tags %}
+{% load unicorn %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% unicorn_scripts %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Sistema MVP{% endblock titulo %}</title>
+</head>
+<body>
+    {% csrf_token %}
+    <div class="container my-4">
+        {% block contenido %}
+        
+        {% endblock contenido %}
+    </div>
+</body>
+</html>
