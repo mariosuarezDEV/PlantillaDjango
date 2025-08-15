@@ -18,6 +18,7 @@ class Base(models.Model):
     user_modificacion = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name="%(class)s_modificacion"
     )
+    active = models.BooleanField(default=True)
 
     class Meta:
         abstract = True

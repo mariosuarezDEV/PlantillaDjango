@@ -33,6 +33,7 @@ django-import-export==4.3.9
 django-money==3.5.4
 django-unfold==0.64.2
 django-unicorn==0.62.0
+fido2==2.0.0
 gitdb==4.0.12
 GitPython==3.1.41
 hyperlink==21.0.0
@@ -54,6 +55,7 @@ pycparser==2.22
 PyJWT==2.10.1
 pyOpenSSL==25.1.0
 python-dateutil==2.9.0.post0
+qrcode==8.2
 redis==5.2.1
 requests==2.32.4
 service-identity==24.2.0

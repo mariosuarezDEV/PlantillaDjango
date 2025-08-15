@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     # Terceros
     "django_bootstrap5",
     "import_export",
@@ -72,7 +73,9 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.mfa",
     "allauth.socialaccount.providers.google",
+    "allauth.usersessions",
     # Aplicaciones
     "base.apps.BaseConfig",
 ]
@@ -89,6 +92,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # AllAuth
     "allauth.account.middleware.AccountMiddleware",
+    "allauth.usersessions.middleware.UserSessionsMiddleware",
 ]
 
 ROOT_URLCONF = "proyecto.urls"
@@ -211,6 +215,14 @@ ACCOUNT_SIGNUP_FIELDS = {
 }  # Campos del formulario de registro
 
 ACCOUNT_UNIQUE_EMAIL = True  # Asegurar que el email sea único
+
+MFA_FORMS = {
+    "authenticate": "allauth.mfa.base.forms.AuthenticateForm",
+    "reauthenticate": "allauth.mfa.base.forms.AuthenticateForm",
+    "activate_totp": "allauth.mfa.totp.forms.ActivateTOTPForm",
+    "deactivate_totp": "allauth.mfa.totp.forms.DeactivateTOTPForm",
+    "generate_recovery_codes": "allauth.mfa.recovery_codes.forms.GenerateRecoveryCodesForm",
+}
 
 # Configuración de Crispy
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
