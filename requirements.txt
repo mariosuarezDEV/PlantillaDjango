@@ -18,6 +18,7 @@ click-didyoumean==0.3.1
 click-plugins==1.1.1.2
 click-repl==0.3.0
 constantly==23.10.4
+coverage==7.10.3
 crispy-bootstrap5==2025.6
 cryptography==45.0.6
 daphne==4.2.1
@@ -40,12 +41,14 @@ GitPython==3.1.41
 hyperlink==21.0.0
 idna==3.10
 incremental==24.7.2
+iniconfig==2.1.0
 kombu==5.5.4
 Markdown==3.8.2
 martor==1.7.11
 oauthlib==3.3.1
 orjson==3.11.2
 packaging==25.0
+pluggy==1.6.0
 prompt_toolkit==3.0.51
 psycopg==3.2.9
 psycopg-binary==3.2.9
@@ -53,8 +56,12 @@ py-moneyed==3.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycparser==2.22
+Pygments==2.19.2
 PyJWT==2.10.1
 pyOpenSSL==25.1.0
+pytest==8.4.1
+pytest-cov==6.2.1
+pytest-django==4.11.1
 python-dateutil==2.9.0.post0
 qrcode==8.2
 redis==5.2.1
