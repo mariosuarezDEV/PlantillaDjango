@@ -13,6 +13,16 @@
 	],
 	"service": "django",
 	"workspaceFolder": "/app",
+	"runServices": [
+		"db",
+		"pgadmin",
+		"redis",
+		"django",
+		"celery",
+		"flower",
+		"nginx",
+		"cli"
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [

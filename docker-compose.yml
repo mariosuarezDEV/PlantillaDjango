@@ -95,6 +95,20 @@ services:
     networks:
       - red_interna
     restart: always
+  # CLI for manual commands
+  cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.s3
+    container_name: S3
+    networks:
+      - red_interna
+    volumes:
+      - .:/workspace
+    depends_on:
+      - db
+      - django
+    restart: always
 volumes:
   db_data:
 networks:
