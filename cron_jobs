@@ -1,0 +1,4 @@
+# Todos los dias a las 8 AM
+0 8 * * * /usr/local/bin/python /workspace/S3/backup.py >> /workspace/cron.log 2>&1
+# Todos los dias a las 8 PM
+0 20 * * * /usr/local/bin/python /workspace/S3/backup.py >> /workspace/cron.log 2>&1

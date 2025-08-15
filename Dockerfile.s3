@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y wget gnupg2 lsb-release
 RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
     && wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && apt-get update \
-    && apt-get install -y postgresql-client-16 \
+    && apt-get install -y postgresql-client-16 cron \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar dependencias de Python
@@ -19,5 +19,15 @@ RUN pip install boto3 awscli python-dotenv
 # Carpeta de trabajo
 WORKDIR /workspace
 
+# Copiar crontab
+COPY . .
+COPY cron_jobs /etc/cron.d/cron_jobs
+
+# Dar permisos correctos y registrar cron
+RUN chmod 0644 /etc/cron.d/cron_jobs \
+    && crontab /etc/cron.d/cron_jobs
+
 # Mantener contenedor en ejecución
-CMD ["tail", "-f", "/dev/null"]
+CMD ["sh", "-c", "cron && tail -f /workspace/cron.log"]
+
+
