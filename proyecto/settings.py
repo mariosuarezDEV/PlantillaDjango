@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import environ
 import os
 from pathlib import Path
@@ -256,4 +257,12 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "America/Mexico_City"  # Ajusta a tu zona horaria
 # celery -A proyecto worker --loglevel=info
 
+# Configuración de mensajes (estilos para bootstrap)
+MESSAGE_TAGS = {
+    messages.DEBUG: "secondary",  # Bootstrap "bg-secondary"
+    messages.INFO: "info",  # Bootstrap "alert-info"
+    messages.SUCCESS: "success",  # Bootstrap "alert-success"
+    messages.WARNING: "warning",  # Bootstrap "alert-warning"
+    messages.ERROR: "danger",  # Bootstrap "alert-danger"
+}
 # daphne -b 0.0.0.0 -p 8000 proyecto.asgi:application
