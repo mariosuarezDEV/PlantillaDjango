@@ -8,7 +8,7 @@
         <!-- Menú de navegación para usuarios autenticados -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
+            <a class="nav-link" aria-current="page" href="{% url 'inicio' %}"><i class="fa-solid fa-house"></i> Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -45,19 +45,19 @@
             <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"><i class="fa-solid fa-circle-user"></i> {{ user.get_full_name|default:user.username }}</button>
             <ul class="dropdown-menu dropdown-menu-lg-end">
               <li>
-                <a href="{{ email_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-gear"></i> {% trans 'Change Email' %}</a>
+                <a href="{{ email_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-envelope"></i> {% trans 'Change Email' %}</a>
               </li>
               <li>
-                <a href="{{ change_password_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i> {% trans 'Change Password' %}</a>
+                <a href="{{ change_password_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-key"></i> {% trans 'Change Password' %}</a>
               </li>
               <li>
-                <a href="{{ connections_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-users"></i> {% trans 'Account Connections' %}</a>
+                <a href="{{ connections_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-link"></i> {% trans 'Account Connections' %}</a>
               </li>
               <li>
-                <a href="{{ mfa_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-users"></i> {% trans 'Two-Factor Authentication' %}</a>
+                <a href="{{ mfa_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-qrcode"></i> {% trans 'Two-Factor Authentication' %}</a>
               </li>
               <li>
-                <a href="{{ usersessions_list_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-users"></i> {% trans 'User Sessions' %}</a>
+                <a href="{{ usersessions_list_url_ }}" class="dropdown-item" type="button"><i class="fa-solid fa-users-gear"></i> {% trans 'User Sessions' %}</a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
