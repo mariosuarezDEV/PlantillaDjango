@@ -48,9 +48,10 @@ try:
     )
     s3.upload_file(backup_file, os.getenv("S3_BUCKET_NAME"), backup_file)
     print(f"Backup subido a S3: {backup_file}")
-    # Eliminar el archivo local
-    os.remove(backup_file)
-    print(f"Archivo local eliminado: {backup_file}")
 
 except subprocess.CalledProcessError as e:
     print("Error al hacer backup:", e)
+finally:
+    # Eliminar el archivo local
+    os.remove(backup_file)
+    print(f"Archivo local eliminado: {backup_file}")
