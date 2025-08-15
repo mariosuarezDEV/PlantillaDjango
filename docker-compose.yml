@@ -27,6 +27,7 @@ services:
       - red_interna
     depends_on:
       - db
+    restart: always
   # Redis service for caching
   redis:
     image: redis:alpine
