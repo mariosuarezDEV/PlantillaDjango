@@ -170,12 +170,44 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "base.User"
 
 # Configuración de All Auth
+
+# LOGIN / LOGOUT
+LOGIN_REDIRECT_URL = "/"  # A dónde redirigir tras login
+LOGOUT_REDIRECT_URL = "/"  # A dónde redirigir tras logout
+ACCOUNT_LOGOUT_ON_GET = True  # Logout con solo visitar /logout/
+
+
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 SOCIALACCOUNT_PROVIDERS = {}
+
+ACCOUNT_FORMS = {
+    "add_email": "allauth.account.forms.AddEmailForm",
+    "change_password": "allauth.account.forms.ChangePasswordForm",
+    "confirm_login_code": "allauth.account.forms.ConfirmLoginCodeForm",
+    "login": "allauth.account.forms.LoginForm",
+    "request_login_code": "allauth.account.forms.RequestLoginCodeForm",
+    "reset_password": "allauth.account.forms.ResetPasswordForm",
+    "reset_password_from_key": "allauth.account.forms.ResetPasswordKeyForm",
+    "set_password": "allauth.account.forms.SetPasswordForm",
+    "signup": "allauth.account.forms.SignupForm",
+    "user_token": "allauth.account.forms.UserTokenForm",
+}  # Formularios de autenticación
+
+ACCOUNT_SESSION_REMEMBER = False  # No recordar sesión por defecto
+
+ACCOUNT_LOGIN_METHODS = {"username", "email"}  # Métodos de login permitidos
+
+ACCOUNT_SIGNUP_FIELDS = {
+    "email*",
+    "password1*",
+    "password2*",
+}  # Campos del formulario de registro
+
+ACCOUNT_UNIQUE_EMAIL = True  # Asegurar que el email sea único
 
 # Configuración de Crispy
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
