@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     "allauth.mfa",
     "allauth.socialaccount.providers.google",
     "allauth.usersessions",
+    "guardian",
     # Aplicaciones
     "base.apps.BaseConfig",
 ]
@@ -189,6 +190,7 @@ ACCOUNT_LOGOUT_ON_GET = True  # Logout con solo visitar /logout/
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+    "guardian.backends.ObjectPermissionBackend",
 ]
 
 SOCIALACCOUNT_PROVIDERS = {}
