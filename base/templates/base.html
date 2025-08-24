@@ -2,12 +2,14 @@
 {% load crispy_forms_tags %}
 {% load unicorn %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
   <head>
     {% unicorn_scripts %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <script src="https://kit.fontawesome.com/f89f8ae43b.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{ form.media }}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
@@ -19,7 +21,7 @@
   <body>
     {% csrf_token %}
     {% include 'navbar.html' %}
-    <div class="container my-4">
+    <div class="container-fluid px-4 my-5">
       {% include 'alertas.html' %}
       {% block contenido %}
 
